@@ -5,9 +5,11 @@
  * that's right, kids, that's not lifestyle but live styling of a web page. 
  * */
 
-var animation;
-var speed = 1000;
-var pause = 400;
+var animation,
+	speed = 1000,
+	pause = 400,
+	initialStep = 0;
+
 
 /* properties animatable by jQuery.animate() incl. jQuery.color */
 var animatable = {
@@ -162,29 +164,43 @@ var animate = function( step ) {
 
 // exports =============================================
 module.exports = {
-	init: function( anim, speed ) {
+	init: function( _animation, _speed, _initialStep ) {
 		
-		if ( anim )
-			animation = anim;
-		if ( speed )
-			speed = speed;
+		if ( typeof _animation !== 'object' ) // falsy considered
+		{
+			console.error('must initialize with an animation js object.');
+			return;
+		}
+		animation = _animation;
+		
+		// optional params
+		if ( typeof _speed !== 'undefined' )
+			speed = _speed;
+		
+		if ( typeof _initialStep !== 'undefined' )
+			initialStep = _initialStep;
 	},
+	
 	start: function() {
 		if ( !animation )
 		{
-			console.error('must initialize witn an animation js object.');
-			return;
+				console.error('call init() first');
+				return;
 		}
+		
 		console.log('lifestyle init');
 		setTimeout( 
 				function() { animate(0); }, 
 		speed );
 	},
+	
 	rush: function() {
-		console.error('needs implementing (if needed)');
+		console.error('needs implementing');
 	},
 	finish: function() {
-		console.error('needs implementing (if needed)');
-	}	
+		console.error('needs implementing');
+	}
+	
+	
 };
 
