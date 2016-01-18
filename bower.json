@@ -1,0 +1,19 @@
+{
+    "name": "livestyle",
+    "version": "0.0.1",
+	"license": "MIT",
+    "main": "dist/livestyle.js",
+    "ignore": [
+        "src",
+		".bowerrc",
+		".gitignore"
+    ],
+    "dependencies": {
+        "jquery": "~1.10",
+        "jquery-color": "~2.1",
+		
+    },
+    "devDependencies": {
+        
+    }
+}
